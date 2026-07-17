@@ -7,6 +7,10 @@ export type Testimonial = {
   source: "Fiverr" | "Upwork" | "Verified";
   slider?: boolean;
   topic?: string;
+  // Pulled-out result chips for the featured testimonial. Each string = "<figure> <label>",
+  // e.g. "40% ↓ CAC" renders a bold "40%" + label "↓ CAC".
+  metrics?: string[];
+  image?: string; // headshot in /public/testimonial (optimized square webp)
 };
 
 export const testimonials: Testimonial[] = [
@@ -16,6 +20,8 @@ export const testimonials: Testimonial[] = [
     role: "B2B IT Firm",
     source: "Verified",
     slider: true,
+    metrics: ["40% ↓ CAC", "3× booked demos", "6 weeks"],
+    image: "/testimonial/cmo.webp",
   },
   {
     quote: "Ritesh is a rockstar. Looking forward to working on more projects together.",
@@ -23,6 +29,7 @@ export const testimonials: Testimonial[] = [
     role: "Founder, Woliba",
     source: "Fiverr",
     slider: true,
+    image: "/testimonial/nathan-figg.webp",
   },
   {
     quote: "The value received far exceeded the amount I paid.",
@@ -30,6 +37,7 @@ export const testimonials: Testimonial[] = [
     role: "Crypto Startup Founder",
     source: "Upwork",
     slider: true,
+    image: "/testimonial/james-slater.webp",
   },
   {
     quote: "Thanks for the fantastic work, which cleared most startups' mind blocks at the launch stage.",

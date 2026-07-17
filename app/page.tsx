@@ -107,9 +107,9 @@ export default function Home() {
         <div className="wrap">
           <div className="stat-panel reveal">
             <StatBar stats={[
-              { value: 10, suffix: "+", cap: "Years in B2B GTM" },
-              { value: 100, suffix: "+", cap: "Projects delivered" },
-              { value: 40, suffix: "+", cap: "B2B clients" },
+              { value: 20, suffix: "+", cap: "Years of experience" },
+              { value: 250, suffix: "+", cap: "Projects delivered" },
+              { value: 100, suffix: "M+", cap: "Pipeline generated" },
               { value: 5.0, suffix: "★", decimals: 1, cap: "Fiverr Pro · 45 reviews", gold: true },
             ]} />
           </div>
