@@ -1,25 +1,60 @@
 "use client";
 import { useState } from "react";
+import Image from "next/image";
 
-// Newsletter subscribe. Variants share identical copy; only the layout changes.
+// Newsletter subscribe. Variants share the same message; the layout and emphasis change.
 // TODO: wire to HubSpot (FPG033 pattern — separate list). Currently a client-side demo.
-export default function NLBlock({ variant = "band" }: { variant?: "inline" | "band" | "feature" }) {
+export default function NLBlock({ variant = "band" }: { variant?: "card" | "band" | "feature" }) {
   const [done, setDone] = useState(false);
   const onSubmit = (e: React.FormEvent) => { e.preventDefault(); setDone(true); };
 
-  if (variant === "inline") {
+  // Big two-column subscribe card: identity + social proof (left), pitch + form (right).
+  if (variant === "card") {
+    // Decorative reviewer face photos (alt="") sitting next to the star rating.
+    const REVIEWERS = ["/images/reviewer-1.webp", "/images/reviewer-2.webp", "/images/reviewer-3.webp"];
     return (
-      <div className="nl-inline reveal">
-        <div>
-          <h3 style={{ fontSize: "1.35rem", marginTop: 6 }}>Ritesh&rsquo;s Newsletter</h3>
-          <p className="mini" style={{ marginTop: 6, maxWidth: "46ch" }}>
-            One signal-led GTM play every week — the framework, the stack, and the automation behind it.
+      <div className="nl-card reveal">
+        <div className="nlc-left">
+          <div className="nlc-head">
+            <Image className="nlc-portrait" src="/images/ritesh-avatar.webp" alt="Ritesh Osta"
+              width={80} height={80} sizes="80px" />
+            <div className="nlc-headtext">
+              <h2 className="nlc-title">Ritesh&rsquo;s Newsletter</h2>
+            </div>
+          </div>
+          <p className="nlc-community">
+            Join a growing community of 1,200+ founders, RevOps and GTM leaders.
           </p>
+          <div className="nlc-proof">
+            <span className="nlc-avatars">
+              {REVIEWERS.map((src) => (
+                <Image key={src} src={src} alt="" width={42} height={42} />
+              ))}
+            </span>
+            <span className="nlc-proof-text">
+              <span className="nlc-stars" aria-hidden="true">★★★★★</span>
+              <b>5.0 · 55 reviews</b>
+            </span>
+          </div>
         </div>
-        <form className="nl-form" onSubmit={onSubmit} style={{ marginTop: 0 }}>
-          <input className="field" type="email" required placeholder="you@company.com" aria-label="Work email" style={{ minWidth: 0 }} />
-          <button className="btn btn-primary" type="submit"><span className="dot" />{done ? "Subscribed ✓" : "Subscribe"}</button>
-        </form>
+
+        <div className="nlc-right">
+          <p className="nlc-desc">
+            Each week, I share one signal-led GTM play — the framework, the stack, and the
+            automation behind it. Actionable systems for driving pipeline, not another pitch.
+          </p>
+          <form className="nlc-form" onSubmit={onSubmit}>
+            <div className="nlc-field">
+              <input type="email" required placeholder="Your Email" aria-label="Your email" />
+            </div>
+            <button className="btn btn-primary nlc-submit" type="submit">
+              <span className="dot" />{done ? "Subscribed ✓" : "Subscribe"}
+            </button>
+            <p className="nlc-fine">
+              By submitting this form, you&rsquo;ll be signed up to my free newsletter. You can opt out at any time.
+            </p>
+          </form>
+        </div>
       </div>
     );
   }
@@ -115,7 +150,7 @@ export default function NLBlock({ variant = "band" }: { variant?: "inline" | "ba
             <span className="nlf-card-ic nlf-ic-gold">
               <svg viewBox="0 0 24 24" width="18" height="18"><path d="m12 2 2.9 6.2 6.6.7-4.9 4.5 1.4 6.6L12 17.8 5.9 21l1.4-6.6L2.4 8.9l6.6-.7L12 2Z" /></svg>
             </span>
-            <span className="nlf-card-t"><b>5.0<span className="nlf-star">★</span></b><span>45 reviews</span></span>
+            <span className="nlf-card-t"><b>5.0<span className="nlf-star">★</span></b><span>55 reviews</span></span>
           </div>
 
           <div className="nlf-card nlf-card-c">
@@ -132,7 +167,7 @@ export default function NLBlock({ variant = "band" }: { variant?: "inline" | "ba
             Join founders, RevOps and GTM leaders who read one signal-led play every week. No pitch. Unsubscribe any time.
           </p>
           <div className="social-proof">
-            <span className="badge b-star">★ 5.0 from 45 reviews</span>
+            <span className="badge b-star">★ 5.0 from 55 reviews</span>
           </div>
           <form className="nl-form" onSubmit={onSubmit}>
             <input className="field" type="email" required placeholder="Work email" aria-label="Work email" style={{ minWidth: 0 }} />
@@ -146,10 +181,6 @@ export default function NLBlock({ variant = "band" }: { variant?: "inline" | "ba
 
   return (
     <div className="nl-band reveal">
-      <svg viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true">
-        <path d="M0 26 H820 L860 26 L888 8 L916 26 H1200" fill="none" stroke="var(--trace)" strokeWidth="1.4" />
-        <circle cx="888" cy="8" r="3.4" fill="var(--amber)" />
-      </svg>
       <div className="nl-band-grid">
         <div className="nl-band-copy">
           <h3>Ritesh&rsquo;s <span className="nl-hl">Newsletter</span></h3>
@@ -157,7 +188,7 @@ export default function NLBlock({ variant = "band" }: { variant?: "inline" | "ba
             Join founders, RevOps and GTM leaders who read one signal-led play every week. No pitch. Unsubscribe any time.
           </p>
           <div className="social-proof">
-            <span className="badge b-star">★ 5.0 from 45 reviews</span>
+            <span className="badge b-star">★ 5.0 from 55 reviews</span>
             <span className="nl-proof-note">Read every week by 1,200+ GTM leaders.</span>
           </div>
         </div>

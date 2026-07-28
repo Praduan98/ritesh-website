@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 const STATS = [
   { figure: "5.0 ★", cap: "average" },
-  { figure: "45", cap: "reviews" },
+  { figure: "55", cap: "reviews" },
   { figure: "43", cap: "five-star" },
 ];
 

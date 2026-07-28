@@ -145,11 +145,6 @@ export default function GtmEngineBuild() {
       <section className="section">
         <div className="wrap">
           <div className="ctaband reveal">
-            <svg viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true">
-              <line x1="0" y1="30" x2="1200" y2="30" style={{ stroke: "var(--trace-soft)" }} strokeWidth="1" />
-              <path d="M0 30 H980 L1020 30 L1048 12 L1076 30 H1200" fill="none" style={{ stroke: "var(--trace)" }} strokeWidth="1.6" />
-              <circle cx="1048" cy="12" r="4" fill="#F4B740" />
-            </svg>
             <h3>Ready to Build?</h3>
             <p>Tell me where the pipeline is stuck. I will show you the signals you are missing.</p>
             <div className="btns">

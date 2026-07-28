@@ -1,5 +1,4 @@
 "use client";
-import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 // "Signal Orbit" — the frameworks as a radial system map. Three orbit rings
@@ -11,25 +10,25 @@ type LayerKey = "dark" | "signals" | "engines";
 
 const DATA: Record<LayerKey, {
   num: string; role: string; chip: string; name: string; tag: string;
-  label: string; href: string; link: string;
+  label: string;
   items?: [string, string, boolean?][]; engines?: string[];
 }> = {
   dark: {
     num: "01", role: "Vision", chip: "orb-chip-1", name: "DARK Funnel",
     tag: "Where demand actually lives. The vision layer — what executives buy into.",
-    label: "The letters", href: "/frameworks/dark-funnel", link: "Explore the DARK Funnel",
+    label: "The letters",
     items: [["D", "Detect"], ["A", "Augment"], ["R", "Reach"], ["K", "Kaizen"]],
   },
   signals: {
     num: "02", role: "Execution", chip: "orb-chip-2", name: "S.I.G.N.A.L.S",
     tag: "How demand becomes revenue. The execution playbook.",
-    label: "The letters", href: "/frameworks/signals-playbook", link: "Explore the S.I.G.N.A.L.S playbook",
+    label: "The letters",
     items: [["S", "Spot"], ["I", "Integrate"], ["G", "Generate", true], ["N", "Nurture"], ["A", "Automate"], ["L", "Learn"], ["S", "Scale"]],
   },
   engines: {
     num: "03", role: "Ownership", chip: "orb-chip-3", name: "The 3 GTM Engines",
     tag: "Who owns what. Signal, Personalisation, Activation — each with a named owner and a defined stack.",
-    label: "The three engines", href: "/frameworks/gtm-engines", link: "Explore the 3 GTM Engines",
+    label: "The three engines",
     engines: ["Signal", "Personalisation", "Activation"],
   },
 };
@@ -161,7 +160,6 @@ export default function SignalOrbit() {
                 ))}
               </ul>
             )}
-            <Link className="orb-link" href={d.href}>{d.link} <span className="orb-arrow">→</span></Link>
           </div>
         </aside>
       </div>

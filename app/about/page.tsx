@@ -27,12 +27,12 @@ const BEYOND = [
   "Certified public speaker and trainer, on stage for GTM, ABM and AI in B2B.",
   "Mentor to early-stage SaaS founders and B2B growth leads.",
   "Creator on YouTube, where I break down GTM systems in public.",
-  "Top Rated Fiverr Pro, hand-picked into the Pro community — 5.0 across 45 reviews.",
+  "Top Rated Fiverr Pro, hand-picked into the Pro community — 5.0 across 55 reviews.",
 ];
 
 const ACCOMPLISHMENTS = [
   { h: "100+ Projects Delivered", p: "B2B SaaS, IT services, healthcare and asset management — from first pipeline to predictable revenue." },
-  { h: "Top Rated Fiverr Pro", p: "Hand-picked into the Fiverr Pro community. 5.0 across 45 reviews, Level 2 seller." },
+  { h: "Top Rated Fiverr Pro", p: "Hand-picked into the Fiverr Pro community. 5.0 across 55 reviews, Level 2 seller." },
   { h: "Frameworks in Production", p: "DARK, S.I.G.N.A.L.S and the 3 GTM Engines run inside client GTM teams today, not just in slide decks." },
   { h: "Two Products Shipped", p: "InsightsTap, a GTM engineering studio. JobFeeder, real-time hiring-signal detection for B2B pipelines." },
 ];

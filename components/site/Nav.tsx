@@ -68,7 +68,21 @@ export default function Nav() {
 
         <nav className="nav-main" aria-label="Primary">
           <Link href="/about">About</Link>
-          <Link href="/work">Work</Link>
+          <div className="nav-drop">
+            <Link href="/work">Work <span aria-hidden="true">▾</span></Link>
+            <div className="nav-drop-menu">
+              <a href="https://insightstap.com/" target="_blank" rel="noopener noreferrer" className="nd-biz">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img className="nd-logo" src="/brand/insightstap.webp" alt="" width={30} height={30} />
+                <span className="nd-txt"><b>Agency</b><span>InsightsTap ↗</span></span>
+              </a>
+              <a href="https://allaisuite.com/" target="_blank" rel="noopener noreferrer" className="nd-biz">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img className="nd-logo" src="/brand/allai-icon.svg" alt="" width={30} height={30} />
+                <span className="nd-txt"><b>Product</b><span>AllAI Suite ↗</span></span>
+              </a>
+            </div>
+          </div>
           <Link href="/frameworks">Frameworks</Link>
           <div className="nav-drop" onMouseLeave={() => setDrop(null)}>
             <button type="button" aria-haspopup="true" aria-expanded={drop === "free"} aria-controls="drop-free"
@@ -101,7 +115,18 @@ export default function Nav() {
         <button className="mobile-close" type="button" aria-label="Close menu"
           onClick={() => setOpen(false)}>✕</button>
         <Link href="/about" onClick={() => setOpen(false)}>About</Link>
-        <Link href="/work" onClick={() => setOpen(false)}>Work</Link>
+        <details>
+          <summary>Work</summary>
+          <Link href="/work" onClick={() => setOpen(false)}>Case Studies</Link>
+          <a href="https://insightstap.com/" target="_blank" rel="noopener noreferrer" className="mn-biz" onClick={() => setOpen(false)}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/brand/insightstap.webp" alt="" width={22} height={22} /> Agency · InsightsTap ↗
+          </a>
+          <a href="https://allaisuite.com/" target="_blank" rel="noopener noreferrer" className="mn-biz" onClick={() => setOpen(false)}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/brand/allai-icon.svg" alt="" width={22} height={22} /> Product · AllAI Suite ↗
+          </a>
+        </details>
         <Link href="/frameworks" onClick={() => setOpen(false)}>Frameworks</Link>
         <details>
           <summary>Free Resources</summary>

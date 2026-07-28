@@ -1,12 +1,29 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
-import { DarkLoop } from "@/components/diagrams/FrameworkDiagrams";
+import type { ReactNode, CSSProperties } from "react";
 
 export const metadata: Metadata = {
   title: { absolute: "The DARK Funnel Framework — Detect, Augment, Reach" },
   description:
     "Most buying intent never reaches your CRM. The DARK Funnel framework shows how to detect demand before the form fill and turn it into pipeline.",
   alternates: { canonical: "/frameworks/dark-funnel" },
+};
+
+// Hand-drawn line icons, one per move.
+const ICONS: Record<string, ReactNode> = {
+  // Detect — radar sweep picking up an unseen blip
+  D: <><path d="M3 12a9 9 0 0 1 9-9" /><path d="M7 12a5 5 0 0 1 5-5" /><circle cx="12" cy="12" r="1" fill="currentColor" stroke="none" /><path d="M12 12 18.5 5.5" /><circle cx="18.6" cy="5.4" r="1.5" /></>,
+  // Augment — stacked layers of context
+  A: <><path d="M12 3 20.5 7.6 12 12 3.5 7.6 12 3Z" /><path d="M3.5 12 12 16.5 20.5 12" /><path d="M3.5 16.5 12 21 20.5 16.5" /></>,
+  // Reach — paper plane fired at the peak
+  R: <><path d="M21 4 3 11l7 3 3 7 8-17Z" /><path d="M21 4 10 14" /></>,
+  // Kaizen — a self-improving loop
+  K: <><path d="M4.5 12a7.5 7.5 0 0 1 12.9-5.2" /><path d="M17.6 3.4v3.4h-3.4" /><path d="M19.5 12a7.5 7.5 0 0 1-12.9 5.2" /><path d="M6.4 20.6v-3.4h3.4" /></>,
+};
+
+const HUES: Record<string, string> = {
+  D: "var(--cyan)", A: "var(--cyan-dark)", R: "var(--gold-shade)", K: "var(--iris)",
 };
 
 const STEPS = [
@@ -24,6 +41,12 @@ const STEPS = [
     quote: "Each cycle compounds pipeline efficiency." },
 ];
 
+const check = (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M5 12.5l4.5 4.5L19 7" />
+  </svg>
+);
+
 const BREADCRUMB = {
   "@context": "https://schema.org", "@type": "BreadcrumbList",
   itemListElement: [
@@ -38,68 +61,67 @@ export default function DarkFunnel() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMB) }} />
 
-      {/* M01 · Hero */}
-      <section className="hero wrap">
-        <div style={{ maxWidth: 860, marginInline: "auto", textAlign: "center" }}>
-          <h1 style={{ maxWidth: "none", marginInline: "auto" }}>The <span className="accent">D.A.R.K</span> Funnel</h1>
-          <p className="lead" style={{ marginInline: "auto", maxWidth: "52ch" }}>
-            Most buying intent is invisible to your CRM, your ads dashboard and your lead reports. DARK is how we see
-            demand before it becomes a lead.
-          </p>
-          <div className="hero-cta" style={{ justifyContent: "center" }}>
-            <Link href="/playbooks" className="btn btn-primary"><span className="dot" />Download the DARK playbook</Link>
-            <Link href="/contact" className="btn btn-ghost">Book a call</Link>
+      {/* M01 · Split hero — copy left, the DARK Funnel diagram right, softly blended */}
+      <section className="split-hero df-hero">
+        <div className="sh-media" aria-hidden="true">
+          <Image src="/images/hero-dark-funnel.webp" alt="" fill priority quality={92}
+            sizes="(max-width:820px) 100vw, 56vw" style={{ objectFit: "contain", objectPosition: "center" }} />
+          <div className="sh-blend" />
+        </div>
+        <div className="wrap sh-copy">
+          <div className="sh-copy-inner">
+            <span className="sh-eyebrow">Layer 01 · The Vision</span>
+            <h1>The <span className="accent">D.A.R.K</span> Funnel</h1>
+            <p className="lead">
+              Most buying intent is invisible to your CRM, your ads dashboard and your lead reports. DARK is how we see
+              demand before it becomes a lead.
+            </p>
+            <div className="hero-cta">
+              <Link href="/playbooks" className="btn btn-primary">Download the DARK playbook <span className="arw">→</span></Link>
+              <Link href="/contact" className="btn btn-ghost">Book a call</Link>
+            </div>
           </div>
         </div>
-        <div style={{ marginTop: "clamp(40px,5vw,64px)" }}><DarkLoop /></div>
       </section>
 
-      {/* M02–M05 · D / A / R / K alternating blocks */}
-      <section className="section">
-        <div className="wrap" style={{ display: "flex", flexDirection: "column", gap: "clamp(56px,8vw,112px)" }}>
-          {STEPS.map((s, i) => {
-            const visual = (
-              <div className="reveal" key="v" style={{ position: "relative", borderRadius: "var(--r-xl)", padding: "clamp(28px,4vw,48px)", background: "var(--grad-accent)", overflow: "hidden", minHeight: 220, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
-                <div style={{ fontFamily: "var(--font-display)", fontWeight: 800, lineHeight: 1, fontSize: "clamp(4.5rem,13vw,8rem)", letterSpacing: "-.04em", background: "var(--grad-headline)", WebkitBackgroundClip: "text", backgroundClip: "text", color: "transparent" }}>{s.L}</div>
-                <svg viewBox="0 0 400 40" preserveAspectRatio="none" aria-hidden="true" style={{ width: "100%", height: 26, marginTop: 24 }}>
-                  <line x1="0" y1="26" x2="400" y2="26" style={{ stroke: "var(--trace-soft)" }} strokeWidth="1" strokeDasharray="4 6" />
-                  <path d="M0 24 H210 L240 22 L262 6 L286 22 H400" fill="none" style={{ stroke: "var(--cyan-dark)" }} strokeWidth="2" />
-                  <circle cx="262" cy="6" r="4.5" fill="#F4B740" />
-                </svg>
-              </div>
-            );
-            const copy = (
-              <div className="reveal" key="c">
-                <h2 style={{ marginTop: 14, fontSize: "clamp(1.9rem,1.4rem+1.8vw,2.8rem)" }}>{s.h}</h2>
-                <p style={{ marginTop: 14, color: "var(--ink-2)", fontSize: "1.14rem", fontWeight: 500 }}>{s.intro}</p>
-                <div className="pillrow" style={{ marginTop: 20 }}>
-                  {s.list.map((l) => <span key={l} className="pill">{l}</span>)}
+      {/* M02 · The four moves — D / A / R / K */}
+      <section className="section tint">
+        <div className="wrap">
+          <div className="section-head reveal" style={{ textAlign: "center", alignItems: "center", marginInline: "auto" }}>
+            <h2>Four Moves, One Loop</h2>
+            <p>Detect demand while it&rsquo;s invisible, augment it with context, reach at the peak — then improve every cycle. Kaizen loops back to Detect.</p>
+          </div>
+          <div className="dark-grid">
+            {STEPS.map((s) => (
+              <article key={s.L} className="dark-step reveal" style={{ "--ds-hue": HUES[s.L] } as CSSProperties}>
+                <span className="ds-watermark" aria-hidden="true">{s.L}</span>
+                <div className="ds-head">
+                  <span className="ds-icon"><svg viewBox="0 0 24 24" aria-hidden="true">{ICONS[s.L]}</svg></span>
+                  <h3 className="ds-title">{s.h}</h3>
                 </div>
-                <blockquote style={{ margin: "26px 0 0", paddingLeft: 20, borderLeft: "3px solid var(--cyan)", fontFamily: "var(--font-display)", fontWeight: 600, fontSize: "1.2rem", lineHeight: 1.4, color: "var(--ink)", letterSpacing: "-.01em" }}>
-                  {s.quote}
-                </blockquote>
-              </div>
-            );
-            return (
-              <div key={s.L} className="split" style={{ alignItems: "center" }}>
-                {i % 2 === 0 ? [visual, copy] : [copy, visual]}
-              </div>
-            );
-          })}
+                <p className="ds-intro">{s.intro}</p>
+                <ul className="ds-list">
+                  {s.list.map((l) => (
+                    <li key={l}><span className="ds-check">{check}</span><span>{l}</span></li>
+                  ))}
+                </ul>
+                <p className="ds-quote">{s.quote}</p>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* M06 · Next layer */}
-      <section className="section" style={{ paddingTop: 0 }}>
+      {/* M03 · Next layer */}
+      <section className="section next-layer">
         <div className="wrap">
           <Link href="/frameworks/signals-playbook" className="card-link reveal">
-            <div className="card" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "var(--s5)", flexWrap: "wrap" }}>
-              <div style={{ maxWidth: "52ch" }}>
-                <p style={{ marginTop: 12, color: "var(--ink)", fontFamily: "var(--font-display)", fontWeight: 700, fontSize: "clamp(1.3rem,1.1rem+1vw,1.9rem)", lineHeight: 1.3, letterSpacing: "-.015em" }}>
-                  DARK explains where demand lives. S.I.G.N.A.L.S is how you capture it.
-                </p>
+            <div className="card df-next">
+              <div>
+                <span className="df-next-kicker">Layer 02</span>
+                <p className="df-next-title">DARK explains where demand lives. S.I.G.N.A.L.S is how you capture it.</p>
               </div>
-              <span className="btn-link" style={{ fontSize: "1.1rem" }}>Read Layer 2: S.I.G.N.A.L.S <span className="arw">→</span></span>
+              <span className="btn-link">Read the S.I.G.N.A.L.S playbook <span className="arw">→</span></span>
             </div>
           </Link>
         </div>

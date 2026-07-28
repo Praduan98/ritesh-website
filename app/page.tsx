@@ -1,14 +1,12 @@
 import Link from "next/link";
 import SignalOrbit from "@/components/diagrams/SignalOrbit";
 import PhotoFrame from "@/components/site/PhotoFrame";
-import CaseThumb from "@/components/site/CaseThumb";
 import { socialUrls } from "@/components/site/SocialLinks";
 import NLBlock from "@/components/modules/NLBlock";
 import LogoWall from "@/components/modules/LogoWall";
 import StatBar from "@/components/modules/StatBar";
 import QuoteSlider from "@/components/modules/QuoteSlider";
 import VideoCard from "@/components/modules/VideoCard";
-import { homeCases } from "@/data/cases";
 import { videos } from "@/data/videos";
 import { hueVars } from "@/data/cardHues";
 
@@ -53,18 +51,18 @@ export default function Home() {
               <Link href="/work-with-me" className="btn btn-primary"><span className="dot" />Work With Me</Link>
             </div>
             <div className="hero-trust">
-              <span className="badge b-star">★ 5.0 · 45 reviews</span>
+              <span className="badge b-star">★ 5.0 · 55 reviews</span>
               <span>Top Rated Fiverr Pro · Founder of InsightsTap &amp; JobFeeder</span>
             </div>
           </div>
           <PhotoFrame src="/images/ritesh-hero.webp" alt="Ritesh Osta, GTM engineer and founder of InsightsTap"
-            tag="Ritesh Osta · GTM Engineer" priority objectPosition="center" />
+            tag="Ritesh Osta · GTM Engineer" priority objectPosition="center" showFiverr />
         </div>
       </section>
 
       {/* M02 · Newsletter strip */}
       <section className="wrap" style={{ paddingBottom: "clamp(44px,7vw,80px)" }}>
-        <NLBlock variant="inline" />
+        <NLBlock variant="card" />
       </section>
 
       {/* M03 · Logo wall — full-bleed marquee (spans the viewport, not the .wrap cap) */}
@@ -110,7 +108,7 @@ export default function Home() {
               { value: 20, suffix: "+", cap: "Years of experience" },
               { value: 250, suffix: "+", cap: "Projects delivered" },
               { value: 100, suffix: "M+", cap: "Pipeline generated" },
-              { value: 5.0, suffix: "★", decimals: 1, cap: "Fiverr Pro · 45 reviews", gold: true },
+              { value: 5.0, suffix: "★", decimals: 1, cap: "Fiverr Pro · 55 reviews", gold: true },
             ]} />
           </div>
         </div>
@@ -131,7 +129,7 @@ export default function Home() {
               </div>
             ))}
           </div>
-          <div style={{ marginTop: 36 }}>
+          <div style={{ marginTop: 36, textAlign: "center" }}>
             <Link href="/work-with-me" className="btn btn-primary"><span className="dot" />Work With Me</Link>
           </div>
         </div>
@@ -145,31 +143,8 @@ export default function Home() {
             <p>Three layers, one operating model. This is how a company moves from guesswork to signal-led growth.</p>
           </div>
           <SignalOrbit />
-          <div style={{ marginTop: 44, textAlign: "center" }}>
-            <Link href="/frameworks" className="btn btn-ghost">Explore the frameworks</Link>
-          </div>
-        </div>
-      </section>
-
-      {/* M08 · Selected Work */}
-      <section className="section">
-        <div className="wrap">
-          <div className="section-head reveal">
-            <h2>Systems That Shipped</h2>
-          </div>
-          <div className="grid g3">
-            {homeCases.map((c) => (
-              <Link key={c.slug} href={`/work/${c.slug}`} className="card-link reveal">
-                <div className="case-card">
-                  <CaseThumb slug={c.slug} />
-                  {c.metric && <span className="case-metric">{c.metric}</span>}
-                  <span className="mtitle">{c.title}</span>
-                </div>
-              </Link>
-            ))}
-          </div>
-          <div style={{ marginTop: 36 }}>
-            <Link href="/work" className="btn-link">See all work <span className="arw">→</span></Link>
+          <div style={{ marginTop: "clamp(44px,5vw,64px)", textAlign: "center" }}>
+            <Link href="/frameworks" className="btn btn-primary">Explore the frameworks <span className="arw">→</span></Link>
           </div>
         </div>
       </section>
