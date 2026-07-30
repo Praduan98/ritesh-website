@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { CSSProperties } from "react";
 import QualifyForm from "@/components/site/QualifyForm";
 import LogoWall from "@/components/modules/LogoWall";
 import { hueVars } from "@/data/cardHues";
@@ -20,26 +21,31 @@ const CREDS = [
 ];
 
 // "What you get on the call" — the reference's four-benefit grid, in GTM terms.
+// Icons are the hand-drawn set in /public/icons, painted via CSS mask rather than
+// <img>: these files carry no fill attribute, so as an image they'd render black
+// and vanish on the dark band. Masking lets them take the brand colour and invert
+// on card hover like the outline icons they replaced. Keeping them as files (not
+// inline SVG) keeps ~19KB of path data out of the HTML.
 const GETS = [
   {
     title: "Pipeline Diagnosis",
     body: "Where your funnel leaks — mapped signal by signal, before we touch a single tool.",
-    icon: <path d="M3 5h18l-7 8v5l-4 2v-7L3 5Z" />,
+    icon: "/icons/funnel-tool_3907091.svg",
   },
   {
     title: "90-Day Roadmap",
     body: "A sequenced plan of plays, with milestones, owners and the order to ship them.",
-    icon: <><rect x="3.5" y="4.5" width="17" height="16" rx="2" /><path d="M3.5 9h17M8 3v4M16 3v4" /></>,
+    icon: "/icons/calendar_4771798.svg",
   },
   {
     title: "Signal & Data Map",
     body: "Which buying signals to capture and act on — and where they already live in your stack.",
-    icon: <><path d="M4 13a8 8 0 0 1 8-8" /><path d="M7.5 13a4.5 4.5 0 0 1 4.5-4.5" /><circle cx="12" cy="13" r="1.6" /></>,
+    icon: "/icons/radar_4850008.svg",
   },
   {
     title: "Automation Blueprint",
     body: "The stack and workflows that run the engine — without adding headcount.",
-    icon: <><circle cx="12" cy="12" r="3.3" /><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.1 5.1l2.1 2.1M16.8 16.8l2.1 2.1M18.9 5.1l-2.1 2.1M7.2 16.8l-2.1 2.1" /></>,
+    icon: "/icons/design_8457355.svg",
   },
 ];
 
@@ -103,7 +109,9 @@ export default function WorkWithMe() {
           <div className="grid g2">
             {GETS.map((g, i) => (
               <div key={g.title} className="card hue-card wwm-benefit reveal" style={hueVars(i)}>
-                <span className="icon-badge"><svg viewBox="0 0 24 24" aria-hidden="true">{g.icon}</svg></span>
+                <span className="icon-badge">
+                  <i className="wwm-ic" aria-hidden="true" style={{ "--ic": `url(${g.icon})` } as CSSProperties} />
+                </span>
                 <div>
                   <h3>{g.title}</h3>
                   <p>{g.body}</p>

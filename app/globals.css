@@ -615,7 +615,22 @@ img{max-width:100%;height:auto}
 .wwm-sent p{color:var(--ink-2);margin-top:10px;max-width:38ch;margin-inline:auto}
 /* dark "what you get" cards — icon left, copy right */
 .wwm-benefit{display:flex;gap:clamp(16px,1.6vw,22px);align-items:flex-start}
-.wwm-benefit .icon-badge{margin-bottom:0;flex:none}
+/* badge scales with the art — .icon-badge's shared 60px is left alone because the
+   homepage uses the same class with the smaller outline icons */
+.wwm-benefit .icon-badge{margin-bottom:0;flex:none;
+  width:clamp(66px,6vw,84px);height:clamp(66px,6vw,84px);border-radius:var(--r-lg)}
+/* hand-drawn icons from /public/icons, painted through a CSS mask so they inherit
+   the brand colour (the source files carry no fill, so an <img> would be black).
+   Sized well above the 30px outline icons they replaced — these carry finer detail
+   (the funnel's stippled edge, the calendar's date dots) and go muddy small. */
+.wwm-benefit .wwm-ic{
+  display:block;width:clamp(42px,3.9vw,54px);height:clamp(42px,3.9vw,54px);background-color:var(--cyan-light);
+  -webkit-mask:var(--ic) center/contain no-repeat;
+          mask:var(--ic) center/contain no-repeat;
+  transition:background-color .35s ease}
+/* match the outline icons' hover-invert: white chip, icon takes the card's hue */
+.section.feature .hue-card:hover .icon-badge .wwm-ic{background-color:var(--bh-edge,var(--teal))}
+@media(prefers-reduced-motion:reduce){.wwm-benefit .wwm-ic{transition:none}}
 .wwm-benefit h3{margin-bottom:6px}
 
 /* ---- SPLIT HERO — copy left, image right, blended through the centre ----
