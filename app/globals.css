@@ -1608,6 +1608,101 @@ img{max-width:100%;height:auto}
 .df-next-title{margin-top:8px;font-family:var(--font-display);font-weight:700;letter-spacing:-.015em;line-height:1.28;
   font-size:clamp(1.3rem,1.1rem + 1vw,1.9rem);color:var(--ink);max-width:52ch}
 
+/* ---------- GTM BLUEPRINT SPRINT PAGE (bp-) ---------- */
+.bp-kicker{align-self:flex-start;display:inline-flex;align-items:center;gap:.6em;font-family:var(--font-mono);
+  font-weight:700;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-text)}
+.bp-kicker::before{content:"";width:7px;height:7px;border-radius:2px;background:currentColor;transform:rotate(45deg);
+  box-shadow:0 0 10px -1px currentColor}
+
+/* M02 — who this is for */
+.bp-fit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,2.2vw,28px)}
+@media(max-width:860px){.bp-fit-grid{grid-template-columns:1fr}}
+.bp-fit{display:flex;flex-direction:column;gap:16px;background:var(--surface);border:1px solid var(--hairline);
+  border-top:3px solid var(--bp-hue);border-radius:var(--r-xl);padding:clamp(24px,2.6vw,32px);box-shadow:var(--shadow);
+  transition:transform .3s var(--spring),box-shadow .3s var(--ease)}
+.bp-fit:hover{transform:translateY(-5px);box-shadow:var(--shadow-lift),0 24px 48px -22px color-mix(in srgb,var(--bp-hue) 46%,transparent)}
+.bp-fit-ic{width:54px;height:54px;border-radius:var(--r-md);display:grid;place-items:center;
+  background:color-mix(in srgb,var(--bp-hue) 12%,transparent);border:1px solid color-mix(in srgb,var(--bp-hue) 30%,transparent)}
+.bp-fit-ic svg{width:26px;height:26px;fill:none;stroke:var(--bp-hue);stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+.bp-fit-label{font-family:var(--font-display);font-weight:800;font-size:1.24rem;letter-spacing:-.01em;color:var(--ink)}
+.bp-fit-body{color:var(--muted);font-size:1.02rem;line-height:1.6}
+
+/* M03 — four-week timeline */
+.bp-weeks{position:relative;list-style:none;margin:0;padding:0;display:flex;flex-direction:column;--bp-gap:clamp(14px,1.8vw,22px);gap:var(--bp-gap)}
+.bp-week{position:relative;display:grid;grid-template-columns:58px 1fr;gap:clamp(18px,2.4vw,30px);align-items:start}
+/* connector: from this node's centre down to the next node's centre — robust to any card height */
+.bp-week:not(:last-child)::before{content:"";position:absolute;left:28px;top:35px;width:2px;height:calc(100% + var(--bp-gap));
+  background:linear-gradient(180deg,var(--bp-hue),var(--bp-next,var(--bp-hue)))}
+.bp-week-node{position:relative;z-index:1;margin-top:6px;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;
+  font-family:var(--font-display);font-weight:800;font-size:1.5rem;color:#fff;background:var(--bp-hue);
+  box-shadow:0 10px 24px -10px color-mix(in srgb,var(--bp-hue) 75%,transparent),0 0 0 8px var(--canvas)}
+.bp-week-card{background:var(--surface);border:1px solid var(--hairline);border-radius:var(--r-lg);
+  padding:clamp(18px,2vw,24px) clamp(20px,2.2vw,28px);box-shadow:var(--shadow);
+  transition:transform .3s var(--spring),box-shadow .3s var(--ease)}
+.bp-week:hover .bp-week-card{transform:translateX(5px);box-shadow:var(--shadow-lift)}
+.bp-week-kick{font-family:var(--font-mono);font-weight:700;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--bp-ink)}
+.bp-week-name{font-family:var(--font-display);font-weight:800;font-size:clamp(1.24rem,1.05rem + .6vw,1.5rem);
+  letter-spacing:-.015em;color:var(--ink);margin-top:5px}
+.bp-week-desc{margin-top:8px;color:var(--muted);font-size:1.04rem;line-height:1.62;max-width:62ch}
+@media(max-width:560px){
+  .bp-week{grid-template-columns:48px 1fr;gap:16px}
+  .bp-week:not(:last-child)::before{left:23px;top:30px}
+  .bp-week-node{width:48px;height:48px;font-size:1.24rem}
+}
+
+/* M04 — deliverables */
+.bp-deliver-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(20px,2.2vw,28px)}
+@media(max-width:720px){.bp-deliver-grid{grid-template-columns:1fr}}
+.bp-deliver{position:relative;display:grid;grid-template-columns:auto 1fr;gap:clamp(16px,1.8vw,22px);align-items:start;
+  background:var(--surface);border:1px solid var(--hairline);border-radius:var(--r-xl);
+  padding:clamp(22px,2.4vw,30px);padding-left:calc(clamp(22px,2.4vw,30px) + 4px);box-shadow:var(--shadow);overflow:hidden;
+  transition:transform .3s var(--spring),box-shadow .3s var(--ease)}
+.bp-deliver::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--bp-hue)}
+.bp-deliver:hover{transform:translateY(-4px);box-shadow:var(--shadow-lift),0 24px 48px -22px color-mix(in srgb,var(--bp-hue) 40%,transparent)}
+.bp-deliver-ic{flex:none;width:52px;height:52px;border-radius:var(--r-md);display:grid;place-items:center;
+  background:color-mix(in srgb,var(--bp-hue) 12%,transparent);border:1px solid color-mix(in srgb,var(--bp-hue) 30%,transparent)}
+.bp-deliver-ic svg{width:25px;height:25px;fill:none;stroke:var(--bp-hue);stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+.bp-deliver-num{position:absolute;top:clamp(16px,2vw,20px);right:clamp(18px,2vw,24px);font-family:var(--font-mono);
+  font-weight:700;font-size:.82rem;letter-spacing:.08em;color:color-mix(in srgb,var(--bp-ink) 55%,transparent)}
+.bp-deliver-title{font-family:var(--font-display);font-weight:800;font-size:1.16rem;letter-spacing:-.01em;color:var(--ink);padding-right:28px}
+.bp-deliver-body{margin-top:6px;color:var(--muted);font-size:1.02rem;line-height:1.58}
+
+/* related programs (above the closing CTA) */
+.bp-related-head{display:block;font-family:var(--font-mono);font-weight:700;font-size:.72rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.bp-related{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,1.6vw,20px);margin-bottom:clamp(30px,4vw,52px)}
+@media(max-width:640px){.bp-related{grid-template-columns:1fr}}
+.bp-rel-card{display:flex;align-items:center;justify-content:space-between;gap:16px;background:var(--surface);
+  border:1px solid var(--hairline);border-radius:var(--r-lg);padding:clamp(16px,1.8vw,20px) clamp(18px,2vw,24px);
+  box-shadow:var(--shadow);transition:transform .25s var(--spring),box-shadow .25s var(--ease),border-color .25s ease}
+.bp-rel-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lift);border-color:color-mix(in srgb,var(--cyan) 42%,var(--hairline))}
+.bp-rel-l{display:flex;flex-direction:column;gap:3px}
+.bp-rel-name{font-family:var(--font-display);font-weight:700;font-size:1.06rem;color:var(--ink)}
+.bp-rel-sub{font-size:.9rem;color:var(--muted)}
+.bp-rel-go{flex:none;color:var(--accent-text);display:inline-flex;transition:transform .25s var(--spring)}
+.bp-rel-card:hover .bp-rel-go{transform:translateX(4px)}
+
+/* ---------- GTM TEAM COACHING PAGE (tc-) — reuses .bp-fit / .bp-related cards ---------- */
+.tc-grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(18px,2vw,26px)}
+@media(max-width:900px){.tc-grid4{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.tc-grid4{grid-template-columns:1fr}}
+.tc-more{margin-top:clamp(26px,3vw,38px)}
+
+/* ---------- GTM ENGINE BUILD PAGE (eb-) — stat band; reuses .bp-fit / .bp-related ---------- */
+.eb-timing{max-width:1000px;margin-inline:auto;text-align:center}
+.eb-timing-h{font-size:clamp(1.9rem,1.3rem + 2.4vw,3rem);letter-spacing:-.02em;color:#FFFFFF}
+.eb-timing-h .eb-accent{color:var(--cyan-light)}
+.eb-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,2.4vw,40px);margin-top:clamp(32px,4.5vw,54px)}
+@media(max-width:680px){.eb-stats{grid-template-columns:1fr;gap:clamp(26px,7vw,38px)}}
+.eb-stat{position:relative;display:flex;flex-direction:column;align-items:center;gap:10px}
+.eb-stat + .eb-stat::before{content:"";position:absolute;left:calc(-1 * clamp(9px,1.2vw,20px));top:16%;bottom:16%;width:1px;
+  background:linear-gradient(180deg,transparent,rgba(255,255,255,.22),transparent)}
+@media(max-width:680px){.eb-stat + .eb-stat::before{display:none}}
+.eb-stat-big{font-family:var(--font-display);font-weight:800;letter-spacing:-.03em;line-height:1;color:#FFFFFF;
+  font-size:clamp(2.6rem,1.7rem + 3.4vw,4.2rem);display:inline-flex;align-items:baseline;gap:.08em}
+.eb-stat-unit{color:var(--cyan-light);font-size:.4em;font-weight:800}
+.eb-stat-cap{color:#CDEBDD;font-size:1.02rem;line-height:1.4;max-width:24ch}
+
 /* ---------- GTM ENGINES PAGE ---------- */
 .engine-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,2.2vw,28px)}
 @media(max-width:900px){.engine-grid{grid-template-columns:1fr}}
@@ -1957,6 +2052,191 @@ img{max-width:100%;height:auto}
 .modal .vframe{aspect-ratio:16/9;background:radial-gradient(120% 130% at 30% 0%,#066D6D,#013A3A);border:none;
   border-radius:var(--r-md);display:grid;place-items:center;color:#9ECCCA;margin-top:var(--s4);font-family:var(--font-mono);font-size:.85rem}
 .modal-close{float:right;width:42px;height:42px;border:2px solid var(--ink);background:#FFFFFF;color:var(--ink);border-radius:var(--r-md);cursor:pointer}
+
+/* ============================================================
+   PLAYBOOKS — "THE FIELD KIT" rack.
+   The frameworks as a shelf of field manuals: each card carries a
+   deep-panel cover drawn from its own framework's motif, a contents
+   list, and a publication-style spec row. The email gate is folded
+   away behind a button so the resting state sells the artifact, not
+   the form. A 7/5 · 5/7 twelve-column rhythm breaks the old 2x2.
+   Scoped under .pbk-* / .pb-*.
+   ============================================================ */
+.pbk{--pb-r:var(--r-xl)}
+
+/* ---- per-card colour themes: one accent + its own deep panel ---- */
+.pb-cyan{--pb-a:#2BDCDC;--pb-hot:#F4B740;--pb-deep:#04605E;--pb-deep2:#012E2E}
+.pb-teal{--pb-a:#0DCFCF;--pb-hot:#F4B740;--pb-deep:#02514F;--pb-deep2:#012726}
+/* espresso, not olive — a brown mid-tone under the gold glow turns muddy */
+.pb-gold{--pb-a:#FFD27A;--pb-hot:#FFF0CE;--pb-deep:#3A2708;--pb-deep2:#160E02}
+.pb-iris{--pb-a:#A29BFE;--pb-hot:#F4B740;--pb-deep:#3B2FA6;--pb-deep2:#1B1454}
+
+/* ---------- kit-wide unlock bar ---------- */
+.pbk-bar{display:grid;gap:var(--s5);align-items:center;
+  padding:clamp(22px,2.6vw,32px) clamp(24px,3vw,40px);margin-bottom:clamp(32px,4vw,52px);
+  border:1px solid rgba(6,109,109,.16);border-radius:var(--r-lg);
+  background:
+    radial-gradient(84% 120% at 96% 0%,rgba(13,207,207,.16) 0%,transparent 56%),
+    radial-gradient(70% 120% at 2% 100%,rgba(244,183,64,.11) 0%,transparent 52%),
+    linear-gradient(160deg,#FFFFFF 0%,#F2FCFC 100%);
+  box-shadow:var(--shadow);transition:border-color .35s ease,box-shadow .35s var(--ease)}
+.pbk-bar.is-open{border-color:rgba(13,207,207,.5);box-shadow:var(--shadow),var(--glow-cyan)}
+@media(min-width:860px){.pbk-bar{grid-template-columns:1fr auto}}
+.pbk-bar-copy p{color:var(--ink);font-size:clamp(1.02rem,.96rem + .3vw,1.18rem);
+  font-family:var(--font-ui);font-weight:500;margin-top:10px;max-width:46ch}
+.pbk-bar-form{display:flex;gap:var(--s3);flex-wrap:wrap}
+.pbk-bar-form .field{min-width:min(260px,100%)}
+.pbk-bar-done{display:inline-flex;align-items:center;gap:.55em;font-family:var(--font-display);
+  font-weight:700;font-size:1.05rem;color:var(--accent-text)}
+.pbk-bar-done svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.2;
+  stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+/* ---------- the rack ---------- */
+.pbk-grid{display:grid;gap:clamp(20px,2.4vw,30px)}
+@media(min-width:900px){
+  .pbk-grid{grid-template-columns:repeat(12,1fr)}
+  .pbk-item.sp7{grid-column:span 7}
+  .pbk-item.sp5{grid-column:span 5}
+}
+.pbk-item{min-width:0}
+
+.pbk-card{position:relative;display:flex;flex-direction:column;height:100%;overflow:hidden;
+  background:var(--surface);border:1px solid var(--hairline);border-radius:var(--pb-r);
+  box-shadow:var(--shadow);
+  transition:transform .38s var(--spring),box-shadow .4s var(--ease),border-color .35s ease}
+.pbk-card:hover{transform:translateY(-6px);border-color:color-mix(in srgb,var(--pb-a) 55%,transparent);
+  box-shadow:var(--shadow-lift),0 26px 54px -22px color-mix(in srgb,var(--pb-deep) 55%,transparent)}
+.pbk-card.is-open{border-color:color-mix(in srgb,var(--pb-a) 62%,transparent)}
+/* Every card is cover-on-top; the 7-col ones simply get a wider, shorter cover.
+   (A side-by-side variant was tried and dropped: pairing a horizontal card with a
+   vertical one in the same row made the grid stretch the horizontal card's panel
+   to full row height, leaving a near-empty colour slab.) The two aspect ratios are
+   picked so a 7-col and a 5-col cover land within ~25px of the same height. */
+@media(min-width:900px){
+  .pbk-card.is-wide .pbk-cover{aspect-ratio:21/9}
+}
+
+/* ---------- the cover: photo -> brand scrim -> motif emblem ---------- */
+/* (the gradient here is the fallback the photo sits on while it loads) */
+.pbk-cover{position:relative;overflow:hidden;aspect-ratio:16/9;display:grid;place-items:center;
+  background:linear-gradient(152deg,var(--pb-deep) 0%,var(--pb-deep2) 100%)}
+.pbk-photo{object-fit:cover;object-position:center;z-index:0;
+  transition:transform .6s var(--spring)}
+.pbk-card:hover .pbk-photo{transform:scale(1.05)}
+/* the wash that pulls every sourced photo into the brand palette — same idea as
+   .cc-scrim on /courses, but derived from the card's own --pb-* theme */
+.pbk-scrim{position:absolute;inset:0;z-index:1;
+  background:
+    linear-gradient(0deg,color-mix(in srgb,var(--pb-deep2) 86%,transparent) 0%,
+                        color-mix(in srgb,var(--pb-deep2) 28%,transparent) 54%,
+                        transparent 82%),
+    linear-gradient(150deg,color-mix(in srgb,var(--pb-deep) 50%,transparent) 0%,
+                          color-mix(in srgb,var(--pb-deep2) 72%,transparent) 100%)}
+/* paper grain, so the panel still reads as a printed object over the photo */
+.pbk-cover::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;opacity:.4;
+  background-image:radial-gradient(rgba(255,255,255,.14) .5px,transparent .5px);background-size:5px 5px;
+  -webkit-mask-image:linear-gradient(160deg,#000,transparent 72%);
+  mask-image:linear-gradient(160deg,#000,transparent 72%)}
+.pbk-spine{position:absolute;left:0;top:0;bottom:0;width:7px;z-index:4;
+  background:linear-gradient(180deg,color-mix(in srgb,var(--pb-a) 85%,transparent),color-mix(in srgb,var(--pb-a) 22%,transparent));
+  box-shadow:1px 0 0 rgba(255,255,255,.14)}
+/* the motif, stamped over the photo — smaller than it was as a bare panel so the
+   image reads first; the drop-shadow is what lifts it off a busy background */
+.pbk-emblem{position:relative;z-index:3;display:grid;place-items:center;width:100%;height:100%;
+  padding:clamp(14px,2vw,26px)}
+/* the marks are stroke-only, so they need a tight dark halo to hold their own
+   over a photo — a wide soft shadow just muddies thin lines */
+.pbk-emblem svg{width:56%;height:auto;max-height:70%;display:block;
+  filter:drop-shadow(0 2px 5px rgba(0,0,0,.9)) drop-shadow(0 0 22px rgba(0,0,0,.75));
+  transition:transform .5s var(--spring)}
+.pbk-card:hover .pbk-emblem svg{transform:scale(1.045)}
+@media(max-width:899px){.pbk-emblem svg{width:50%}}
+/* NB: the class in the markup is .pb-glyph — this rule was .pbk-glyph and silently
+   matched nothing, leaving the D/A/R/K letters as black 17px Inter. White reads
+   cleanest on the near-black node fill and keeps cyan for the structural linework. */
+.pb-glyph{font-family:var(--font-mono);font-weight:700;font-size:13px;fill:#FFFFFF;letter-spacing:.02em}
+.pbk-cover .pb-sm{font-size:10.5px;fill:rgba(255,255,255,.62)}
+.pbk-cover .pb-hotglyph{fill:var(--pb-hot)}
+.pbk-cover .pb-numeral{font-family:var(--font-display);font-weight:800;font-size:40px;
+  fill:color-mix(in srgb,var(--pb-a) 52%,transparent);letter-spacing:-.03em}
+/* free badge — the ungated asset gets the loud tag, not the faded one */
+.pbk-freetag{position:absolute;z-index:3;top:14px;right:14px;
+  font-family:var(--font-mono);font-size:.64rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
+  color:#2A1E06;background:var(--gold-tint);border-radius:var(--r-pill);padding:5px 11px;
+  box-shadow:0 8px 20px -8px rgba(0,0,0,.6)}
+
+/* cover entrance — staggered once the card scrolls in */
+.js .reveal .pb-node,.js .reveal .pb-row,.js .reveal .pb-cell{opacity:0}
+.js .reveal.in .pb-node,.js .reveal.in .pb-row,.js .reveal.in .pb-cell{animation:pbPop .5s var(--spring) both;animation-delay:var(--d)}
+.js .reveal .pb-orbit{stroke-dasharray:340;stroke-dashoffset:340}
+.js .reveal.in .pb-orbit{animation:pbDraw 1.1s var(--ease) .1s both}
+/* the S.I.G.N.A.L.S trace draws itself left-to-right (~212 units of polyline) */
+.js .reveal .pb-trace{stroke-dasharray:220;stroke-dashoffset:220}
+.js .reveal.in .pb-trace{animation:pbTrace .95s var(--ease) .08s both}
+@keyframes pbPop{from{opacity:0;transform:scale(.86)}to{opacity:1;transform:none}}
+@keyframes pbDraw{from{stroke-dashoffset:340}to{stroke-dashoffset:0}}
+@keyframes pbTrace{from{stroke-dashoffset:220}to{stroke-dashoffset:0}}
+
+/* ---------- card body ---------- */
+.pbk-body{display:flex;flex-direction:column;flex:1;padding:clamp(24px,2.7vw,34px)}
+.pbk-layer{font-family:var(--font-mono);font-size:.66rem;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--accent-text);display:inline-flex;align-items:center;gap:.6em;margin-bottom:14px}
+.pbk-layer::before{content:"";width:16px;height:2px;border-radius:2px;
+  background:color-mix(in srgb,var(--pb-deep) 70%,var(--cyan));flex:none}
+.pbk-title{font-family:var(--font-display);font-weight:700;letter-spacing:-.022em;line-height:1.14;
+  font-size:clamp(1.32rem,1.1rem + .95vw,1.86rem);color:var(--ink)}
+.pbk-desc{color:var(--muted);font-size:1rem;line-height:1.62;margin-top:10px;max-width:44ch}
+
+/* what's inside — the substance that used to be missing */
+.pbk-inside{list-style:none;margin:var(--s5) 0 0;padding:0;display:flex;flex-direction:column;gap:9px}
+.pbk-inside li{display:flex;align-items:flex-start;gap:.65em;font-size:.95rem;line-height:1.5;color:var(--ink-2)}
+.pbk-inside svg{width:15px;height:15px;flex:none;margin-top:.25em;fill:none;stroke:var(--pb-deep);
+  stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+
+.pbk-foot{margin-top:auto;padding-top:var(--s5)}
+.pbk-spec{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--muted-2);display:flex;flex-wrap:wrap;align-items:center;gap:.5em;
+  padding-bottom:var(--s4);border-bottom:1px solid var(--hairline)}
+.pbk-spec i{font-style:normal;margin-right:.5em;color:var(--hairline-2)}
+.pbk-act{padding-top:var(--s4)}
+
+/* ---------- the gate ---------- */
+.pbk-get{font-family:var(--font-display);font-weight:700;font-size:1.02rem;cursor:pointer;
+  display:inline-flex;align-items:center;gap:.5em;padding:.7em 1.35em;border-radius:var(--r-pill);
+  color:#FFFFFF;background:linear-gradient(140deg,var(--pb-deep),var(--pb-deep2));border:none;
+  box-shadow:0 14px 28px -14px color-mix(in srgb,var(--pb-deep) 85%,transparent);
+  transition:transform .22s var(--spring),box-shadow .3s var(--ease),filter .3s ease}
+.pbk-get:hover{transform:translateY(-2px);filter:brightness(1.14);
+  box-shadow:0 20px 36px -14px color-mix(in srgb,var(--pb-deep) 92%,transparent)}
+.pbk-get .arw{transition:transform .2s var(--spring)}
+.pbk-get:hover .arw{transform:translateX(4px)}
+/* unfurl without a hard-coded height */
+.pbk-gate{display:grid;grid-template-rows:0fr;transition:grid-template-rows .42s var(--spring)}
+.pbk-gate.is-on{grid-template-rows:1fr}
+.pbk-gate-in{overflow:hidden;min-height:0}
+.pbk-form{display:flex;gap:var(--s3);flex-wrap:wrap;padding-top:var(--s4)}
+.pbk-form .field{min-width:min(200px,100%);min-height:48px;font-size:.98rem}
+.pbk-form .btn{min-height:48px;padding-inline:1.4em;white-space:nowrap}
+.pbk-fine{font-size:.82rem;color:var(--muted-2);margin-top:10px}
+
+/* claimed + pending states */
+.pbk-done,.pbk-pending{display:inline-flex;align-items:center;gap:.55em;
+  font-family:var(--font-display);font-weight:700;font-size:1rem}
+.pbk-done{color:var(--accent-text)}
+.pbk-done svg{width:18px;height:18px;flex:none;fill:none;stroke:currentColor;stroke-width:2.4;
+  stroke-linecap:round;stroke-linejoin:round}
+/* the free asset's "not built yet" state — deliberate, not a greyed-out button */
+.pbk-pending{color:var(--gold-text);background:rgba(244,183,64,.13);
+  border:1px dashed rgba(217,154,35,.55);border-radius:var(--r-pill);padding:.6em 1.15em;font-size:.94rem}
+.pbk-pending svg{width:17px;height:17px;flex:none;fill:none;stroke:currentColor;stroke-width:1.9;
+  stroke-linecap:round;stroke-linejoin:round}
+
+@media(prefers-reduced-motion:reduce){
+  .pbk-card,.pbk-cover svg,.pbk-get,.pbk-gate{transition:none}
+  .js .reveal .pb-node,.js .reveal .pb-row,.js .reveal .pb-cell{opacity:1}
+  .js .reveal .pb-trace{stroke-dashoffset:0}
+  .js .reveal .pb-orbit{stroke-dashoffset:0}
+}
 
 /* ---------- REVEAL ---------- */
 .reveal{transition:opacity .8s var(--ease),transform .8s var(--ease)}

@@ -1,5 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import type { ReactNode, CSSProperties } from "react";
+import StatCounter from "@/components/site/StatCounter";
 
 export const metadata: Metadata = {
   title: { absolute: "GTM Engine Build — Done-For-You GTM Systems" },
@@ -8,15 +10,39 @@ export const metadata: Metadata = {
   alternates: { canonical: "/programs/gtm-engine-build" },
 };
 
-const BUILD = [
-  { name: "Signal Infrastructure", desc: "Detection layer, enrichment pipeline, scoring engine, activation triggers. Clay, RB2B, Factors.ai, Common Room." },
-  { name: "AI Agents", desc: "SDR, chat and voice agents on GPT-4o and Claude. They personalise, they qualify, they book." },
-  { name: "CRM as a Decision Engine", desc: "HubSpot or Salesforce rebuilt around routing, scoring and lifecycle logic. We integrate — we do not rip and replace." },
-  { name: "Outreach Orchestration", desc: "Smartlead, Apollo, Instantly and Lemlist wired to the signal layer, with channel-switching and exit conditions." },
-  { name: "BRIDGE Ads", desc: "LinkedIn, Google and Meta triggered by signals, warming accounts before a human ever reaches out." },
-];
+// Hand-drawn line icons (viewBox 0 0 24 24; stroke set in CSS via the hue).
+const ICONS: Record<string, ReactNode> = {
+  // Signal Infrastructure — a radar sweep catching a blip
+  radar: <><path d="M3 12a9 9 0 0 1 9-9" /><path d="M7 12a5 5 0 0 1 5-5" /><circle cx="12" cy="12" r="1" fill="currentColor" stroke="none" /><path d="M12 12 18.5 5.5" /><circle cx="18.6" cy="5.4" r="1.5" /></>,
+  // AI Agents — a chat bubble with a spark
+  ai: <><path d="M5 5h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-8l-4 3.4V15H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z" /><path d="M12 7.6l.9 1.9 1.9.9-1.9.9-.9 1.9-.9-1.9-1.9-.9 1.9-.9.9-1.9Z" /></>,
+  // CRM as a Decision Engine — a hub routing to four nodes
+  hub: <><circle cx="12" cy="12" r="2.6" /><circle cx="5" cy="6" r="1.8" /><circle cx="19" cy="6" r="1.8" /><circle cx="5" cy="18" r="1.8" /><circle cx="19" cy="18" r="1.8" /><path d="M6.5 7.2 10 10.3M17.5 7.2 14 10.3M6.5 16.8 10 13.7M17.5 16.8 14 13.7" /></>,
+  // Outreach Orchestration — a paper plane
+  send: <><path d="M21 4 3 11l7 3 3 7 8-17Z" /><path d="M21 4 10 14" /></>,
+  // BRIDGE Ads — a megaphone broadcasting
+  ads: <><path d="M3.5 10v4l11 4V6L3.5 10Z" /><path d="M14.5 7.5a4.5 4.5 0 0 1 0 9" /><path d="M6.5 15v2.4a1.5 1.5 0 0 0 3 0V16" /></>,
+};
 
 const FACTS = ["4–12 weeks, scope-dependent", "Built by the InsightsTap team", "Your team gets the keys"];
+
+const BUILD = [
+  { icon: "radar", hue: "var(--cyan)", name: "Signal Infrastructure",
+    desc: "Detection layer, enrichment pipeline, scoring engine, activation triggers. Clay, RB2B, Factors.ai, Common Room." },
+  { icon: "ai", hue: "var(--iris)", name: "AI Agents",
+    desc: "SDR, chat and voice agents on GPT-4o and Claude. They personalise, they qualify, they book." },
+  { icon: "hub", hue: "var(--cyan-dark)", name: "CRM as a Decision Engine",
+    desc: "HubSpot or Salesforce rebuilt around routing, scoring and lifecycle logic. We integrate — we do not rip and replace." },
+  { icon: "send", hue: "var(--gold-shade)", name: "Outreach Orchestration",
+    desc: "Smartlead, Apollo, Instantly and Lemlist wired to the signal layer, with channel-switching and exit conditions." },
+  { icon: "ads", hue: "var(--cyan)", name: "BRIDGE Ads",
+    desc: "LinkedIn, Google and Meta triggered by signals, warming accounts before a human ever reaches out." },
+];
+
+const RELATED = [
+  { name: "GTM Blueprint Sprint™", sub: "4-week 1:1 strategy intensive", href: "/programs/gtm-blueprint-sprint" },
+  { name: "GTM Team Coaching", sub: "Train your in-house team", href: "/programs/gtm-team-coaching" },
+];
 
 const BREADCRUMB = {
   "@context": "https://schema.org", "@type": "BreadcrumbList",
@@ -36,6 +62,12 @@ const SERVICE = {
     "Signal stack, AI agents, CRM automation and BRIDGE Ads, built and live in 4 to 6 weeks by the InsightsTap team. From $10K per implementation.",
   url: "https://riteshosta.com/programs/gtm-engine-build",
 };
+
+const arrowGo = (
+  <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+    <path d="M5 12h13M12 5l7 7-7 7" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
 
 export default function GtmEngineBuild() {
   return (
@@ -74,76 +106,56 @@ export default function GtmEngineBuild() {
         </div>
       </section>
 
-      {/* M02 · What gets built */}
+      {/* M02 · What gets built — hue-coded system cards */}
       <section className="section tint">
         <div className="wrap">
           <div className="section-head reveal">
             <h2>What Gets Built</h2>
+            <p>Five systems, wired into one engine — built by the InsightsTap team, then handed to yours.</p>
           </div>
-          <div className="grid g3">
+          <div className="bp-fit-grid">
             {BUILD.map((b) => (
-              <div key={b.name} className="card reveal">
-                <h3>{b.name}</h3>
-                <p>{b.desc}</p>
-              </div>
+              <article key={b.name} className="bp-fit reveal" style={{ "--bp-hue": b.hue } as CSSProperties}>
+                <span className="bp-fit-ic"><svg viewBox="0 0 24 24" aria-hidden="true">{ICONS[b.icon]}</svg></span>
+                <h3 className="bp-fit-label">{b.name}</h3>
+                <p className="bp-fit-body">{b.desc}</p>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* M03 · Timeline & price — fact band */}
-      <section className="section feature" style={{ paddingBlock: "clamp(56px,7vw,96px)" }}>
-        <div className="wrap" style={{ textAlign: "center", maxWidth: 960 }}>
-          <p className="reveal" style={{
-            fontFamily: "var(--font-display)", fontWeight: 800, letterSpacing: "-.022em",
-            color: "#FFFFFF", fontSize: "clamp(1.7rem,1.1rem + 2.6vw,3.2rem)", lineHeight: 1.15,
-          }}>
-            Most engines go live in <span style={{ color: "var(--cyan-light)" }}>4–6 weeks</span>.
-          </p>
-          <p className="reveal" style={{ marginTop: 20, color: "#D6F0EE", fontSize: "1.15rem", maxWidth: "52ch", marginInline: "auto" }}>
-            Signal detection and outreach usually generate pipeline inside the first two.
-          </p>
-          {/* [CONFIRM] $10K figure predates current positioning — verify before ship */}
-          <p className="reveal" style={{
-            marginTop: 28, fontFamily: "var(--font-mono)", fontWeight: 700, fontSize: ".88rem",
-            letterSpacing: ".12em", textTransform: "uppercase", color: "var(--cyan-light)",
-          }}>
-            From $10K per implementation · scope-dependent
-          </p>
-        </div>
-      </section>
-
-      {/* Sideways links */}
-      <section className="section" style={{ paddingBottom: 0 }}>
+      {/* M03 · Timeline & price — stat band */}
+      <section className="section feature stats-band">
         <div className="wrap">
-          <div className="grid g2">
-            <Link href="/programs/gtm-blueprint-sprint" className="card-link reveal">
-              <div className="card" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "var(--s4)", flexWrap: "wrap" }}>
-                <div>
-                  <p style={{ marginTop: 10, color: "var(--ink)", fontFamily: "var(--font-display)", fontWeight: 700, fontSize: "1.3rem", letterSpacing: "-.01em" }}>
-                    GTM Blueprint Sprint&trade;
-                  </p>
-                </div>
-                <span className="btn-link">View <span className="arw">→</span></span>
-              </div>
-            </Link>
-            <Link href="/programs/gtm-team-coaching" className="card-link reveal">
-              <div className="card" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "var(--s4)", flexWrap: "wrap" }}>
-                <div>
-                  <p style={{ marginTop: 10, color: "var(--ink)", fontFamily: "var(--font-display)", fontWeight: 700, fontSize: "1.3rem", letterSpacing: "-.01em" }}>
-                    Team Coaching
-                  </p>
-                </div>
-                <span className="btn-link">View <span className="arw">→</span></span>
-              </div>
-            </Link>
+          <div className="eb-timing">
+            <h2 className="eb-timing-h reveal">Live in Weeks, <span className="eb-accent">Not Quarters</span></h2>
+            <div className="eb-stats reveal">
+              <StatCounter prefix="4–" value={6} unit="wks" caption="to a live engine" />
+              <StatCounter value={2} unit="wks" caption="to first pipeline, usually" />
+              {/* [CONFIRM] $10K figure predates current positioning — verify before ship */}
+              <StatCounter prefix="$" value={10} bigSuffix="K" unit="+" caption="per build · scope-dependent" />
+            </div>
           </div>
         </div>
       </section>
 
-      {/* M04 · Closing CTA — ctaband markup inlined so the InsightsTap button can carry target/rel */}
+      {/* M04 · Related programs + closing CTA (ctaband inlined so the InsightsTap button can carry target/rel) */}
       <section className="section">
         <div className="wrap">
+          <div className="reveal">
+            <div className="bp-related">
+              {RELATED.map((r) => (
+                <Link key={r.href} href={r.href} className="bp-rel-card">
+                  <span className="bp-rel-l">
+                    <span className="bp-rel-name">{r.name}</span>
+                    <span className="bp-rel-sub">{r.sub}</span>
+                  </span>
+                  <span className="bp-rel-go">{arrowGo}</span>
+                </Link>
+              ))}
+            </div>
+          </div>
           <div className="ctaband reveal">
             <h3>Ready to Build?</h3>
             <p>Tell me where the pipeline is stuck. I will show you the signals you are missing.</p>

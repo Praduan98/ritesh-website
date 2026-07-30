@@ -14,8 +14,9 @@ export default function InlineSubscribe() {
         required
         placeholder="Your Email"
         aria-label="Your email"
+        suppressHydrationWarning
       />
-      <button className="btn btn-primary" type="submit">
+      <button className="btn btn-primary" type="submit" suppressHydrationWarning>
         <span className="dot" />{done ? "Subscribed ✓" : "Subscribe"}
       </button>
     </form>

@@ -45,9 +45,9 @@ export default function NLBlock({ variant = "band" }: { variant?: "card" | "band
           </p>
           <form className="nlc-form" onSubmit={onSubmit}>
             <div className="nlc-field">
-              <input type="email" required placeholder="Your Email" aria-label="Your email" />
+              <input type="email" required placeholder="Your Email" aria-label="Your email" suppressHydrationWarning />
             </div>
-            <button className="btn btn-primary nlc-submit" type="submit">
+            <button className="btn btn-primary nlc-submit" type="submit" suppressHydrationWarning>
               <span className="dot" />{done ? "Subscribed ✓" : "Subscribe"}
             </button>
             <p className="nlc-fine">
@@ -134,7 +134,7 @@ export default function NLBlock({ variant = "band" }: { variant?: "card" | "band
                   </span>
                 </div>
 
-                <button className="nlf-issue" type="button" tabIndex={-1}>Read this issue <span className="arw">→</span></button>
+                <button className="nlf-issue" type="button" tabIndex={-1} suppressHydrationWarning>Read this issue <span className="arw">→</span></button>
               </div>
             </div>
           </div>
@@ -170,8 +170,8 @@ export default function NLBlock({ variant = "band" }: { variant?: "card" | "band
             <span className="badge b-star">★ 5.0 from 55 reviews</span>
           </div>
           <form className="nl-form" onSubmit={onSubmit}>
-            <input className="field" type="email" required placeholder="Work email" aria-label="Work email" style={{ minWidth: 0 }} />
-            <button className="btn btn-primary" type="submit"><span className="dot" />{done ? "Subscribed ✓" : "Subscribe"}</button>
+            <input className="field" type="email" required placeholder="Work email" aria-label="Work email" style={{ minWidth: 0 }} suppressHydrationWarning />
+            <button className="btn btn-primary" type="submit" suppressHydrationWarning><span className="dot" />{done ? "Subscribed ✓" : "Subscribe"}</button>
           </form>
           <p className="microcopy">The destination for every social bio link.</p>
         </div>
@@ -195,8 +195,8 @@ export default function NLBlock({ variant = "band" }: { variant?: "card" | "band
         <div className="nl-band-action">
           <span className="nl-action-label">Get the weekly play</span>
           <form className="nl-form" onSubmit={onSubmit}>
-            <input className="field" type="email" required placeholder="Work email" aria-label="Work email" style={{ minWidth: 0 }} />
-            <button className="btn btn-primary" type="submit"><span className="dot" />{done ? "Subscribed ✓" : "Subscribe"}</button>
+            <input className="field" type="email" required placeholder="Work email" aria-label="Work email" style={{ minWidth: 0 }} suppressHydrationWarning />
+            <button className="btn btn-primary" type="submit" suppressHydrationWarning><span className="dot" />{done ? "Subscribed ✓" : "Subscribe"}</button>
           </form>
           <p className="microcopy">One email a week. Unsubscribe in one click.</p>
         </div>

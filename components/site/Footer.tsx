@@ -13,8 +13,8 @@ export default function Footer() {
               <span className="bt"><b>Ritesh Osta</b><span>GTM Engineer</span></span>
             </Link>
             <p className="blurb">
-              Founder of InsightsTap and JobFeeder. GTM engineer, advisor and Top Rated Fiverr Pro helping B2B tech
-              companies turn buyer signals into pipeline.
+              Turning buyer signals into pipeline for B2B tech.
+              Founder of InsightsTap and JobFeeder.
             </p>
             <SocialLinks variant="footer" />
           </div>

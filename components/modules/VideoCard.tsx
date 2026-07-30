@@ -28,6 +28,7 @@ export function VideoEmbed({
     <button
       type="button"
       className="video-thumb vt-lite"
+      suppressHydrationWarning
       aria-label={`Play video: ${title}`}
       onClick={() => setPlaying(true)}
     >

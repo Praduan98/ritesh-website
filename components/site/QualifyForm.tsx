@@ -25,19 +25,19 @@ export default function QualifyForm() {
         <p className="wwm-form-title">Tell me about your project:</p>
 
         <label className="wwm-lab" htmlFor="pf-need">What are you looking for? <span className="wwm-req">*</span></label>
-        <textarea id="pf-need" name="need" required rows={4} className="field"
+        <textarea id="pf-need" name="need" required rows={4} className="field" suppressHydrationWarning
           placeholder="A GTM audit, a done-for-you engine build, coaching for my team&hellip;" />
 
         <label className="wwm-lab" htmlFor="pf-name">Name <span className="wwm-req">*</span></label>
-        <input id="pf-name" name="name" type="text" required className="field" />
+        <input id="pf-name" name="name" type="text" required className="field" suppressHydrationWarning />
 
         <label className="wwm-lab" htmlFor="pf-email">Email <span className="wwm-req">*</span></label>
-        <input id="pf-email" name="email" type="email" required className="field" />
+        <input id="pf-email" name="email" type="email" required className="field" suppressHydrationWarning />
 
         <label className="wwm-lab" htmlFor="pf-phone">Phone</label>
-        <input id="pf-phone" name="phone" type="tel" className="field" placeholder="+1 201 555 0123" />
+        <input id="pf-phone" name="phone" type="tel" className="field" suppressHydrationWarning placeholder="+1 201 555 0123" />
 
-        <button type="submit" className="btn btn-primary wwm-submit"><span className="dot" />Book a Call</button>
+        <button type="submit" className="btn btn-primary wwm-submit" suppressHydrationWarning><span className="dot" />Book a Call</button>
         <p className="microcopy">No obligation. I read every enquiry myself.</p>
       </form>
     </div>

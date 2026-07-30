@@ -113,7 +113,7 @@ export default function SignalOrbit() {
             {NODES.map((n) => (
               <div key={n.key} className="orb-orbiter"
                 style={{ "--orb-a0": n.a0, "--orb-r": n.r, "--orb-dur": n.dur, ...(n.dir ? { "--orb-dir": n.dir } : {}) } as React.CSSProperties}>
-                <button type="button" className={`orb-node ${n.hue}${active === n.key ? " orb-active" : ""}`}
+                <button type="button" suppressHydrationWarning className={`orb-node ${n.hue}${active === n.key ? " orb-active" : ""}`}
                   aria-pressed={active === n.key}
                   aria-label={`Layer ${n.num}, ${n.name}`}
                   onClick={() => select(n.key)} onFocus={() => select(n.key)}>

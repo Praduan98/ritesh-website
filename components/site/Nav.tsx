@@ -85,7 +85,7 @@ export default function Nav() {
           </div>
           <Link href="/frameworks">Frameworks</Link>
           <div className="nav-drop" onMouseLeave={() => setDrop(null)}>
-            <button type="button" aria-haspopup="true" aria-expanded={drop === "free"} aria-controls="drop-free"
+            <button type="button" suppressHydrationWarning aria-haspopup="true" aria-expanded={drop === "free"} aria-controls="drop-free"
               onClick={(e) => { e.stopPropagation(); setDrop(drop === "free" ? null : "free"); }}>
               Free Resources <span aria-hidden="true">▾</span>
             </button>
@@ -94,7 +94,7 @@ export default function Nav() {
             </div>
           </div>
           <div className="nav-drop" onMouseLeave={() => setDrop(null)}>
-            <button type="button" aria-haspopup="true" aria-expanded={drop === "programs"} aria-controls="drop-programs"
+            <button type="button" suppressHydrationWarning aria-haspopup="true" aria-expanded={drop === "programs"} aria-controls="drop-programs"
               onClick={(e) => { e.stopPropagation(); setDrop(drop === "programs" ? null : "programs"); }}>
               Programs <span aria-hidden="true">▾</span>
             </button>
@@ -106,13 +106,13 @@ export default function Nav() {
 
         <div className="tb-right">
           <Link href="/contact" className="btn btn-primary nav-cta"><span className="dot" />Book a Call</Link>
-          <button className="menu-btn" type="button" aria-label="Open menu" aria-expanded={open}
+          <button className="menu-btn" type="button" suppressHydrationWarning aria-label="Open menu" aria-expanded={open}
             onClick={() => setOpen(true)}>☰</button>
         </div>
       </div>
 
       <div className={`mobile-nav${open ? " open" : ""}`} aria-hidden={!open} inert={!open}>
-        <button className="mobile-close" type="button" aria-label="Close menu"
+        <button className="mobile-close" type="button" suppressHydrationWarning aria-label="Close menu"
           onClick={() => setOpen(false)}>✕</button>
         <Link href="/about" onClick={() => setOpen(false)}>About</Link>
         <details>

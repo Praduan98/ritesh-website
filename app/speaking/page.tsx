@@ -117,7 +117,7 @@ export default function Speaking() {
 
           {/* Annex B: press kit ZIP does not exist yet — build backlog. Rendered disabled, playbooks pattern. */}
           <div className="reveal" style={{ marginTop: "clamp(24px,3vw,36px)" }}>
-            <button className="btn btn-ghost" type="button" aria-disabled="true"
+            <button className="btn btn-ghost" type="button" suppressHydrationWarning aria-disabled="true"
               style={{ opacity: 0.6, cursor: "default" }}>
               Download the press kit
             </button>

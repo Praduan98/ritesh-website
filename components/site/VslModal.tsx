@@ -27,7 +27,7 @@ export default function VslModal() {
 
   return (
     <>
-      <button ref={triggerRef} type="button" className="btn btn-ghost" onClick={() => setOpen(true)}>
+      <button ref={triggerRef} type="button" className="btn btn-ghost" suppressHydrationWarning onClick={() => setOpen(true)}>
         ▶ Watch the 5-min brief
       </button>
       <div
@@ -40,7 +40,7 @@ export default function VslModal() {
         onClick={() => setOpen(false)}
       >
         <div className="box" onClick={(e) => e.stopPropagation()}>
-          <button ref={closeRef} type="button" className="modal-close" aria-label="Close" onClick={() => setOpen(false)}>✕</button>
+          <button ref={closeRef} type="button" className="modal-close" suppressHydrationWarning aria-label="Close" onClick={() => setOpen(false)}>✕</button>
           <div className="vframe">Video embed placeholder — wire the hosted VSL here.</div>
         </div>
       </div>

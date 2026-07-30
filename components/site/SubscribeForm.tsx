@@ -10,8 +10,8 @@ export default function SubscribeForm() {
   return (
     <div style={{ maxWidth: 580, marginInline: "auto" }}>
       <form className="nl-form" onSubmit={onSubmit} style={{ marginInline: "auto", justifyContent: "center" }}>
-        <input className="field" type="email" required placeholder="Work email" aria-label="Work email" />
-        <button className="btn btn-primary" type="submit"><span className="dot" />{done ? "Subscribed ✓" : "Subscribe"}</button>
+        <input className="field" type="email" required placeholder="Work email" aria-label="Work email" suppressHydrationWarning />
+        <button className="btn btn-primary" type="submit" suppressHydrationWarning><span className="dot" />{done ? "Subscribed ✓" : "Subscribe"}</button>
       </form>
       <p className="microcopy" style={{ textAlign: "center" }}>No pitch. Unsubscribe any time.</p>
     </div>
