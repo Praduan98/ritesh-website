@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import SocialLinks from "@/components/site/SocialLinks";
+import MeetingEmbed from "@/components/site/MeetingEmbed";
 
 export const metadata: Metadata = {
   title: { absolute: "Contact Ritesh Osta — Book a GTM Strategy Call" },
@@ -37,15 +38,8 @@ export default function Contact() {
               </a>
             </p>
           </div>
-          <div className="card reveal">
-            {/* TODO: replace placeholder with the HubSpot Meetings embed (latest_aes_meeting_link) */}
-            <div style={{
-              marginTop: "var(--s5)", aspectRatio: "4/3", border: "1px dashed var(--hairline-2)",
-              borderRadius: "var(--r-md)", display: "grid", placeItems: "center",
-              color: "var(--muted)", fontFamily: "var(--font-mono)", fontSize: ".85rem", textAlign: "center", padding: "var(--s4)",
-            }}>
-              HubSpot Meetings embed — latest_aes_meeting_link
-            </div>
+          <div className="card reveal mtg-card">
+            <MeetingEmbed />
           </div>
         </div>
       </section>

@@ -44,6 +44,7 @@ export const testimonials: Testimonial[] = [
     name: "Ali Hashmi",
     role: "Founder, StaffWeb.com",
     source: "Fiverr",
+    image: "/testimonial/ali-hashmi.webp",
   },
   {
     quote: "[PLACEHOLDER — carry across verbatim from the live site]",

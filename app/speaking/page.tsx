@@ -110,7 +110,7 @@ export default function Speaking() {
                   fontSize: ".72rem", fontWeight: 700, color: "var(--muted)",
                   flex: "none", minWidth: "clamp(110px,20vw,160px)",
                 }}>{f.label}</span>
-                <span style={{ color: "var(--ink)", fontSize: "1.06rem", fontWeight: 500 }}>{f.value}</span>
+                <span style={{ color: "var(--ink)", fontSize: "1.06rem", fontWeight: 600 }}>{f.value}</span>
               </div>
             ))}
           </div>
